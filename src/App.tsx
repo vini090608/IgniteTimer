@@ -1,19 +1,19 @@
 import { ThemeProvider } from "styled-components";
-import { Button } from "./components/Button";
 import { defaultTheme } from "./styles/themes/default";
 import { GlobalStyle } from "./styles/global";
+import { BrowserRouter } from "react-router-dom";
+import { Router } from "./Router";
+import { CyclesContextProvider } from "./context/CyclesContext";
 
 export function App() {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <h1>Hello World</h1>
-      <Button variant="primary" />
-      <Button variant="secondary" />
-      <Button variant="success" />
-      <Button variant="danger" />
-      <Button />
-
-      <GlobalStyle />
+      <BrowserRouter>
+        <CyclesContextProvider>
+          <Router />
+        </CyclesContextProvider>
+        <GlobalStyle />
+      </BrowserRouter>
     </ThemeProvider>
   );
 }

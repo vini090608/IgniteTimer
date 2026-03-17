@@ -2,19 +2,26 @@ import { HeaderContainer } from "./styles";
 import { Timer, Scroll } from "phosphor-react";
 
 import LogoIgnite from "../../assets/Logo.svg";
-import { NavLink } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export function Header() {
+  const { pathname } = useLocation();
+
   return (
     <HeaderContainer>
       <img src={LogoIgnite} alt="Logo" />
       <nav>
-        <NavLink to="/" title="Timer">
+        {/* Comparamos diretamente com a string da rota */}
+        <Link data-current={pathname === "/"} to="/" title="Timer">
           <Timer size={24} />
-        </NavLink>
-        <NavLink to="/history" title="Histórico">
+        </Link>
+        <Link
+          data-current={pathname === "/history"}
+          to="/history"
+          title="Histórico"
+        >
           <Scroll size={24} />
-        </NavLink>
+        </Link>
       </nav>
     </HeaderContainer>
   );

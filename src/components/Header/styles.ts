@@ -7,11 +7,11 @@ export const HeaderContainer = styled.header`
 
   nav {
     display: flex;
-    gap: 0.5 rem;
+    gap: 0.5rem; /* Removido espaço */
 
     a {
       width: 3rem;
-      height: 3 rem;
+      height: 3rem; /* Removido espaço */
 
       display: flex;
       justify-content: center;
@@ -23,6 +23,12 @@ export const HeaderContainer = styled.header`
       border-bottom: 3px solid transparent;
 
       transition: border-bottom 0.2s;
+
+      /* Corrigido o seletor de atributo */
+      &[data-current="true"] {
+        color: ${(props) => props.theme["green-500"]};
+        border-bottom: 3px solid ${(props) => props.theme["green-500"]};
+      }
 
       &:hover {
         border-bottom: 3px solid ${(props) => props.theme["green-500"]};
